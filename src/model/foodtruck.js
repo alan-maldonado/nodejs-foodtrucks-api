@@ -1,5 +1,4 @@
 import mongoose, { Schema } from 'mongoose';
-import Review from './review';
 
 const FoodTruckSchema = new Schema({
   name: {

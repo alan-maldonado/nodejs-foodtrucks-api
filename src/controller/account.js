@@ -1,13 +1,10 @@
-import  mongoose from 'mongoose';
 import { Router } from 'express';
 import Account from '../model/account';
-import bodyParser from 'body-parser';
 import passport from 'passport';
-import config from '../config';
 
 import {generateAccessToken, respond, authenticate} from '../middleware/authMiddleware';
 
-export default ({ config, db }) => {
+export default () => {
   let api = Router();
 
   // '/v1/account'
@@ -17,7 +14,7 @@ export default ({ config, db }) => {
 
   // '/v1/account/register'
   api.post('/register', (req, res) => {
-    Account.register(new Account({ username: req.body.email}), req.body.password, function(err, account) {
+    Account.register(new Account({ username: req.body.email}), req.body.password, function(err) {
       if (err) {
         return res.status(500).send('An error occurred: ' + err);
       }
