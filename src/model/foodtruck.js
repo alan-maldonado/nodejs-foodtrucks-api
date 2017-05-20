@@ -12,7 +12,10 @@ const FoodTruckSchema = new Schema({
   avgcost: Number,
   geometry: {
     type: { type: String, default: 'Point' },
-    coordinates: [Number]
+    coordinates: {
+      "lat": Number,
+      "long": Number,
+    }
   },
   reviews: [{
     type: Schema.Types.ObjectId,
